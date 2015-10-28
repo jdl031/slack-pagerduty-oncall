@@ -26,7 +26,7 @@ function handleOnCall(req,res){
     if (err){
       return res.status(400).send('There was a problem. Who are you going to ask to fix it, since this is how you find out who is fixing things today?');
     }
-    postToSlack( buildMessage(pagerdutyData) , {slackToken, channel}, () => res.status(200).send('Please be kind to your friendly on-call engineer.'));)
+    postToSlack( buildMessage(pagerdutyData) , {slackToken, channel}, () => res.status(200).send('Please be kind to your friendly on-call engineer.'));
 
   })
 
