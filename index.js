@@ -14,6 +14,7 @@ app.listen(port, () => {
 
 function handleOnCall(req,res){
   const slackToken = process.env.SLACK_TOKEN;
+  console.log(slackToken)
   const pagerdutyApiKey = process.env.PAGERDUTY_KEY;
   const pagerdutySubdomain = process.env.PAGERDUTY_SUBDOMAIN;
   const channel = req.body.channel_id;
@@ -65,7 +66,7 @@ function handleOnCall(req,res){
   } //buildMessage
 
   function postToSlack(message, info, cb){
-    console.log(info)
+    //console.log(info)
     request.post('https://slack.com/api/chat.postMessage', {
       form: {
         token: info.slackToken,
