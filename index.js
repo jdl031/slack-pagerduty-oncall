@@ -26,7 +26,7 @@ function handleOnCall(req,res){
     if (err){
       return res.status(400).send('There was a problem. Who are you going to ask to fix it, since this is how you find out who is fixing things today?');
     }
-    postToSlack( buildMessage(pagerdutyData) , {slackToken, channel}, () => res.status(200).send('Sometimes support can be stressful. Please be kind to your friendly on-call engineer.'));)
+    postToSlack( buildMessage(pagerdutyData) , {slackToken, channel}, () => res.status(200).send('Please be kind to your friendly on-call engineer.'));)
 
   })
 
@@ -43,7 +43,7 @@ function handleOnCall(req,res){
     var yyyy1 = tomorrow.getFullYear()
     var untilDate = yyyy1 + "-" + mm1 + "-" + dd1
 
-    var url = "htts://" + domain + ".pagerduty.com/api/v1/escalation_policies/on_call?since=\"" + sinceDate + "\",until=\"" + untilDate + "\"";
+    var url = "https://" + domain + ".pagerduty.com/api/v1/escalation_policies/on_call?since=\"" + sinceDate + "\",until=\"" + untilDate + "\"";
     // For example, https://redoxengine.pagerduty.com/api/v1/escalation_policies/on_call?"since=2015-10-04","until=2015-10-20"
     var authString = "Token token="+key
     var options = {
@@ -56,7 +56,8 @@ function handleOnCall(req,res){
     request.get(options,cb)
   } //getPagerDutyData
 
-  function buildMessage(){
+  function buildMessage(pagerdutyData){
+    return pagerdutyData.escalation_policies[0].on_call[0].user.name;
 
   } //buildMessage
 

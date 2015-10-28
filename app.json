@@ -1,0 +1,18 @@
+{
+  "name": "Pagerduty On-Call",
+  "description": "Enables /oncall command from Slack to pull on call person's name",
+  "repository": "https://github.com/jdl031/slack-pagerduty-oncall",
+  "logo": "",
+  "keywords": ["slack", "pagerduty", "on-call"],
+  "env": {
+    "SLACK_TOKEN": {
+      "description": "Your slack token."
+    },
+    "PAGERDUTY_KEY": {
+      "description": "The pagerduty key."
+    },
+    "PAGERDUTY_SUBDOMAIN": {
+      "description": "The pagerduty subdomain."
+    },
+  }
+}
