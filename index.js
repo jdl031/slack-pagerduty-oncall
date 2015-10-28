@@ -57,8 +57,9 @@ function handleOnCall(req,res){
   } //getPagerDutyData
 
   function buildMessage(pagerdutyData){
-    console.log(pagerdutyData.body.escalation_policies[0].on_call[0].user.name);
-    return pagerdutyData.body.escalation_policies[0].on_call[0].user.name;
+    var parsedData = JSON.parse(pagerdutyData)
+    console.log(parsedData.escalation_policies[0].on_call[0].user.name);
+    return parsedData.escalation_policies[0].on_call[0].user.name;
 
   } //buildMessage
 
