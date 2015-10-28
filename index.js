@@ -30,8 +30,8 @@ function handleOnCall(req,res){
     if (err){
       return res.status(400).send('There was a problem. Who are you going to ask to fix it, since this is how you find out who is fixing things today?');
     }
-    postToSlack( buildMessage(pagerdutyData) , {slackToken, channel}, () => res.status(200).send('Please be kind to your friendly on-call engineer.'));
-
+    //postToSlack( buildMessage(pagerdutyData) , {slackToken, channel}, () => res.status(200).send('Please be kind to your friendly on-call engineer.'));
+    res.status(200).send('Please be kind to your friendly on-call engineer:' + buildMessage(pagerdutyData))
   })
 
   function getPagerDutyData(key, domain, cb){
@@ -62,13 +62,11 @@ function handleOnCall(req,res){
 
   function buildMessage(pagerdutyData){
     var parsedData = JSON.parse(pagerdutyData.body)
-    console.log(parsedData.escalation_policies[0].on_call[0].user.name);
     return parsedData.escalation_policies[0].on_call[0].user.name;
 
   } //buildMessage
 
   function postToSlack(message, info, cb){
-    //console.log(info)
     request.post('https://slack.com/api/chat.postMessage', {
       form: {
         token: info.slackToken,
