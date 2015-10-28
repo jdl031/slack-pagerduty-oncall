@@ -13,6 +13,6 @@
     },
     "PAGERDUTY_SUBDOMAIN": {
       "description": "The pagerduty subdomain."
-    },
+    }
   }
 }
