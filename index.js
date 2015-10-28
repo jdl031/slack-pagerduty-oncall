@@ -58,7 +58,7 @@ function handleOnCall(req,res){
 
   function buildMessage(pagerdutyData){
     console.log(pagerdutyData);
-    return pagerdutyData.escalation_policies[0].on_call[0].user.name;
+    return pagerdutyData.body.escalation_policies[0].on_call[0].user.name;
 
   } //buildMessage
 
@@ -75,14 +75,3 @@ function handleOnCall(req,res){
     // Use: postAsUser(user, message, { token, channel }, () => res.status(200).send('haha ur so funny'));
   } //postToSlack
 }
-
-
-
-/*
-
-curl -H "Content-type: application/json" -H "Authorization: Token token=EBsPxpAT8pHzzdLNTahj" -X GET -G \
-    --data-urlencode "since=2015-10-04" \
-    --data-urlencode "until=2015-10-20" \
-    "https://redoxengine.pagerduty.com/api/v1/escalation_policies/on_call"
-
-*/
