@@ -14,6 +14,7 @@ app.listen(port, () => {
 
 function handleOnCall(req,res){
   const slackToken = process.env.SLACK_TOKEN;
+  console.log("AAAAA")
   console.log(slackToken)
   const pagerdutyApiKey = process.env.PAGERDUTY_KEY;
   const pagerdutySubdomain = process.env.PAGERDUTY_SUBDOMAIN;
@@ -24,6 +25,7 @@ function handleOnCall(req,res){
   }
 
   getPagerDutyData(pagerdutyApiKey, pagerdutySubdomain, function(err, pagerdutyData, slackToken){
+    console.log("BBBBBB")
     console.log(slackToken)
     if (err){
       return res.status(400).send('There was a problem. Who are you going to ask to fix it, since this is how you find out who is fixing things today?');
