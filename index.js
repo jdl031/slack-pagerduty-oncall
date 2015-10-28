@@ -57,12 +57,13 @@ function handleOnCall(req,res){
   } //getPagerDutyData
 
   function buildMessage(pagerdutyData){
-    console.log(pagerdutyData);
+    console.log(pagerdutyData.body.escalation_policies[0].on_call[0].user.name);
     return pagerdutyData.body.escalation_policies[0].on_call[0].user.name;
 
   } //buildMessage
 
   function postToSlack(message, info, cb){
+    console.log(info)
     request.post('https://slack.com/api/chat.postMessage', {
       form: {
         token: info.slackToken,
