@@ -23,7 +23,7 @@ function handleOnCall(req,res){
   }
 
   getPagerDutyData(pagerdutyApiKey, pagerdutySubdomain, function(err, pagerdutyData, slackToken){
-    console.log(channel)
+    console.log(slackToken)
     if (err){
       return res.status(400).send('There was a problem. Who are you going to ask to fix it, since this is how you find out who is fixing things today?');
     }
