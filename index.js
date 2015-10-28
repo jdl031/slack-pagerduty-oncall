@@ -57,6 +57,7 @@ function handleOnCall(req,res){
   } //getPagerDutyData
 
   function buildMessage(pagerdutyData){
+    console.log(pagerdutyData);
     return pagerdutyData.escalation_policies[0].on_call[0].user.name;
 
   } //buildMessage
