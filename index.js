@@ -57,7 +57,7 @@ function handleOnCall(req,res){
   } //getPagerDutyData
 
   function buildMessage(pagerdutyData){
-    var parsedData = JSON.parse(pagerdutyData)
+    var parsedData = JSON.parse(pagerdutyData.body)
     console.log(parsedData.escalation_policies[0].on_call[0].user.name);
     return parsedData.escalation_policies[0].on_call[0].user.name;
 
